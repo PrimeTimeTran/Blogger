@@ -1,10 +1,5 @@
 # Pre-work - *PrimeTimeBlog*
 
-> HINT: Please
-> - include this README.md in your project and fill out the information.
-> - remove the `README.rdoc` file that Rails generates.
-> - remove all the HINT blocks in this file.
-
 **PrimeTimeBlog** is a Ruby on Rails blog application.
 
 Submitted by: **Loi V Tran**
@@ -25,11 +20,14 @@ The following **required** functionality is complete:
 * [x] User can delete stories, with an alert that asks the user to confirm.
 * [x] User see a search form on the Articles page.
 * [x] User can submit a search term to find all Articles by with titles containing the search term.
+* [x] User can Sign Up, Log In, & Sign Out using the devise gem.
+* [x] Only users that are logged in can create new Articles.
+* [x] Users can only edit their own Articles.
 
 The following **optional** features are implemented:
 * [x] There is a "navbar" that is responsive to window size similar to http://v4-alpha.getbootstrap.com/examples/navbar/.
 * [ ] User can see how many views a post has.
-* [ ] User can leave a comment on a post.
+* [x] User can leave a comment on a post.
 * [ ] User can add "tags" to a post, and filter posts by tag.
 
 > HINT: if you are unsure how to implement the Search feature, you can Google how to implement a simple search form. For example, one of the sites you will find is [this](http://www.jorgecoca.com/buils-search-form-ruby-rails/)
