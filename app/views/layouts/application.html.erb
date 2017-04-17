@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
+
     <!-- Navigation Bar -->
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +21,11 @@
           <li class="nav-item <%= 'active' if current_page?(root_path) %>">
             <a class='nav-link' href="<%= root_path %>">Home</a>
           </li>
-          <li class="nav-item <%= 'active' if current_page?(new_article_path) %>">
-            <a class='nav-link' href="<%= new_article_path %>">New Article</a>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item <%= 'active' if current_page?(new_article_path) %>">
+              <a class='nav-link' href="<%= new_article_path %>">New Article</a>
+            </li>
+          <% end %>
 
           <!-- Search through Articles -->
           <form class="form-inline">
@@ -35,16 +38,17 @@
 
           <!-- Sign Up/Log In/Sign Out logic-->
           <% if user_signed_in? %>
-            <span>
+
               <!--  This line of code below is exactly the same as the anchor link below it! -->
               <!-- <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %> -->
+            <span>
               <a class='navbar-right navbar-text nav-link' data-method="delete" href="<%= destroy_user_session_path %>">Sign Out</a>
             </span>
           <% else %>
+          <!-- Form for Sign Up and Log In -->
             <span>
               <a class='navbar-right navbar-text nav-link' href="<%= new_user_registration_path %>">Sign Up</a>
             </span>
-
             <span>
               <a class='navbar-right navbar-text nav-link' href="<%= new_user_session_path %>">Log In</a>
             </span>
@@ -53,10 +57,14 @@
     </nav>
 
     <!-- Flash Notices -->
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+    <% unless flash.empty? %>
+      <div class="container">
+        <% flash.each do |key, value| %>
+            <%= value %>
+            <% end  %>
+          <% end %>
+      </div>
     <%= yield %>
+
   </body>
 </html>
