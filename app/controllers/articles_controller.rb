@@ -19,6 +19,14 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    if @article.view_count
+      @article.view_count += 1
+    else
+      @article.view_count = 1
+    end
+    @article.save()
+
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
   # GET /articles/new

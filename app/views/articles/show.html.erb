@@ -13,10 +13,11 @@
     </h1>
     <div class="card-block">
       <h6 class="card-title">
-        Posted By: <%= @article.user.email %> <%= time_ago_in_words(@article.created_at) %> ago
+        Posted By: <%= @article.user.email %> <%= time_ago_in_words(@article.created_at) %> ago<br />
+        <e>Views:<%= @article.view_count %></e>
       </h6>
       <p class="card-text">
-        <%= @article.body %>
+        <%= @markdown.render(@article.body).html_safe %>
       </p>
     </div>
   </div>
