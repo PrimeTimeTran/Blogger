@@ -18,9 +18,6 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item <%= 'active' if current_page?(root_path) %>">
-            <a class='nav-link' href="<%= root_path %>">Home</a>
-          </li>
           <% if user_signed_in? %>
             <li class="nav-item <%= 'active' if current_page?(new_article_path) %>">
               <a class='nav-link' href="<%= new_article_path %>">New Article</a>
@@ -64,6 +61,8 @@
             <% end  %>
           <% end %>
       </div>
+
+    <!-- Yields to the controller -->
     <%= yield %>
 
   </body>

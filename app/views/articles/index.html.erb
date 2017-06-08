@@ -1,13 +1,10 @@
-<div class="<%= controller_name %>">
-    <div class="container">
-      <h1>Articles</h1><br />
-      <!-- Body of Article Index & Error message -->
-      <% if @articles.present? %>
-        <%= render @articles %>
-        <!-- Exact same thing as
-        <%= render partial: "article", collection: @articles %> -->
-      <% else %>
-        <p>There are no Articles containing the term(s) <%= params[:search] %>.</p>
-      <% end %>
-  </div>
+<div class="container">
+  <h1>Articles</h1>
+  <% if @articles.present? %>
+    <%= render @articles %>
+    <!-- Exact same thing as
+    <%= render partial: "article", collection: @articles %> -->
+  <% else %>
+    <p>There are no Articles containing the term(s) <%= params[:search] %>.</p>
+  <% end %>
 </div>

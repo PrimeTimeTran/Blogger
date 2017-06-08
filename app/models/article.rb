@@ -1,12 +1,13 @@
 class Article < ApplicationRecord
+  # Validations of the the title and body fields
   validates_presence_of :title, :body
-  # Association between article and User
+
+  # Association between Article & User. Specifies comment dependencies as well.
   belongs_to :user
   has_many :comments, dependent: :destroy
 
-  # Search for article titles and bodies.
+  # Search Article titles & Bodies.
   def self.search(search)
-    where("title LIKE ?", "%#{search}%")
-    where("body LIKE ?", "%#{search}%")
+    where("title || body ILIKE ?", "%#{search}%")
   end
 end

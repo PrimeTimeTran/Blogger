@@ -1,5 +1,9 @@
-<h1>Edit Comment:</h1>
-  <%= form_for [@article, @comment] do |f| %>
-    <%= f.text_field :content, label: "Comment" %>
-    <%= f.button :Submit %>
-  <% end %>
+<div class="container">
+  <h1>Edit Comment:</h1>
+    <%= form_for [@article, @comment] do |f| %>
+      <%= f.text_field :content, label: "Comment", size: "30x10" %><br />
+      <%= f.button :Submit, class: "btn btn-success" %>
+      <%= link_to 'Delete', comment_path, method: 'delete', data: {confirm: "Are you sure you want to delete Article #{@comment.content}?"}, class: 'btn btn-danger' %>
+    <% end %>
+    <!-- <%= link_to 'Delete', article_path, method: 'delete', data: {confirm: "Are you sure you want to delete Article #{@article.title}?"}, class: 'btn btn-danger' %> -->
+</div>

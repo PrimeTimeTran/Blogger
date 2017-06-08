@@ -2,26 +2,25 @@
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+          <% article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
     </div>
-  <% end %>
+    <% end %>
 
   <div class="field">
     <h5><%= f.label :title %></h5>
-    <%= f.text_field :title, required: true %>
+    <%= f.text_field :title, size: "100x10", required: true %>
   </div>
 
-  <div class="field">
+  <div class="field" style="margin-top: 15px">
     <h5><%= f.label :body%></h5>
-    <%= f.text_area :body, required: true %>
+    <%= f.text_area :body, size: "100x12", required: true %>
   </div>
-<br />
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Article' %>
   </div>
 <% end %>
